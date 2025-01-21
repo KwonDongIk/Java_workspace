@@ -16,6 +16,7 @@ public class Variable1 {
 		byte result = (byte) (num2 + num5); // 강제 형변환 / 두 가지 변수값 중 큰 타입으로 형변환 됨
 		int intResult = num1 + num5;
 		System.out.println(intResult);
+		System.out.println(result);
 		
 		// 데이터타입 변수 이름 = 값
 		
