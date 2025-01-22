@@ -22,6 +22,10 @@ public class Todo {
 			// 1. 입금
 			System.out.println("입금할 금액을 입력하세요.>");
 			balance = Integer.parseInt(scn.nextLine());
+			if (sum + balance > 100000) {
+				System.out.println("입금 금액 초과입니다.");
+				continue;
+			}
 			sum += balance;
 			System.out.println("입금 완료");
 			
@@ -30,6 +34,10 @@ public class Todo {
 			// 2. 출금
 			System.out.println("출금할 금액을 입력하세요.>");
 			withdraw = Integer.parseInt(scn.nextLine());
+			if (sum - withdraw < 0) {
+				System.out.println("잔액 부족입니다.");
+				continue;
+			}
 			sum -= withdraw;
 			System.out.println("출금 완료");
 			
@@ -42,6 +50,7 @@ public class Todo {
 			
 			// 4. 종료
 			System.out.println("종료합니다.");
+			break;
 					
 		}
 		System.out.println("처음화면으로 돌아갑니다.\n");
