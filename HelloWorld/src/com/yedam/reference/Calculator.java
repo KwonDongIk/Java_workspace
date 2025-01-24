@@ -1,6 +1,29 @@
 package com.yedam.reference;
 
 public class Calculator {
+	// 1월달 달력
+	public void showCalendar() {
+		String[] days = {"SUN", "MON", "TUE", "WED", "THR", "FRI", "SAT"};
+		for(String day : days) {
+			System.out.printf("%4s", day);
+		}
+		System.out.println();
+		System.out.println("-----------------------------");
+		// 공백, 말일 계산
+		int space = 3;
+		int LastDay = 31;
+		for(int i = 0; i < space; i ++) {
+			System.out.printf("%4s", " ");
+		}
+		
+		for(int i = 1; i <= LastDay; i ++) {
+			System.out.printf("%4d", i);
+			
+			if ((i + space) % 7 == 0) {
+				System.out.println();
+			}
+		}
+	}
 	
 	
 	public Book getBookInfo(String btitle, Book[] bookRepo) {

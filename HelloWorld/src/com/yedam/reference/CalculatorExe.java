@@ -8,30 +8,31 @@ public class CalculatorExe {
 				   		   new Book("이것이 맛있다","요리사","요리왕",70000)};
 		
 		Calculator cal = new Calculator();
+		cal.showCalendar();
 		
-		Book author = cal.getBookInfo("이것이 맛있다", bookRepo1);
-		if (author != null) {
-			author.showDetailInfo();
-		} else {
-			System.out.println("조회 결과 없습니다.");
-		}
-		
-		int[] randomA = cal.randomAry(5);
-		for(int num : randomA) {
-			System.out.println(num);
-		}
-		System.out.println(cal.sum(randomA));
-		
-		
-		
-		int[] ary1 = { 14, 23, 11, 14, 24 };
-		int[] ary2 = { 33, 23, 6, 12, 9 };
-		
-		int max = cal.getMax(cal.sum(ary1), cal.sum(ary2));
-		System.out.println("배열 합이 큰 값은 : " + max);
-		
-		
-		cal.printStar(5);
+//		Book author = cal.getBookInfo("이것이 맛있다", bookRepo1);
+//		if (author != null) {
+//			author.showDetailInfo();
+//		} else {
+//			System.out.println("조회 결과 없습니다.");
+//		}
+//		
+//		int[] randomA = cal.randomAry(5);
+//		for(int num : randomA) {
+//			System.out.println(num);
+//		}
+//		System.out.println(cal.sum(randomA));
+//		
+//		
+//		
+//		int[] ary1 = { 14, 23, 11, 14, 24 };
+//		int[] ary2 = { 33, 23, 6, 12, 9 };
+//		
+//		int max = cal.getMax(cal.sum(ary1), cal.sum(ary2));
+//		System.out.println("배열 합이 큰 값은 : " + max);
+//		
+//		
+//		cal.printStar(5);
 		
 		
 		
