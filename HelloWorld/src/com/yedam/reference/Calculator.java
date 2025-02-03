@@ -75,7 +75,7 @@ public class Calculator {
 		
 	}
 
-	// 메소드 오버로딩
+	// 메소드 오버로딩 : 하나의 클래스 내에서 여러개의 메소드 명을 정의가능 (매개변수의 개수나 타입이 달라야 함)
 	public int sum(int num1, int num2) {
 		return num1 + num2;
 	}
