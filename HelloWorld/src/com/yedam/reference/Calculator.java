@@ -10,8 +10,8 @@ public class Calculator {
 		System.out.println();
 		System.out.println("-----------------------------");
 		// 공백, 말일 계산
-		int space = 3;
-		int LastDay = 31;
+		int space = 6;
+		int LastDay = 28;
 		for(int i = 0; i < space; i ++) {
 			System.out.printf("%4s", " ");
 		}
