@@ -80,15 +80,31 @@ public class BoardExe {
 	
 	public static void addBoard() {
 		// 게시글 등록
+		// 제목 : 5글자 미만 ~ 15글자 초과. 콘솔 출력("등록 불가합니다.");
+		// 똑같은 글 제목이 있으면 콘솔출력("이미 있는 제목입니다.");
 		System.out.println("게시글 제목을 입력해주세요. >> ");
 		String title = sc.nextLine();
-		System.out.println("게시글 내용을 입력해주세요. >> ");
-		String content = sc.nextLine();
 //		System.out.println("작성자 아이디를 입력해주세요. >> ");
 //		String writer = sc.nextLine();
-		System.out.println("날짜를 기입해주세요.(2000-00-00) >> ");
-		String writeDate = sc.nextLine();
+//		System.out.println("날짜를 기입해주세요.(2000-00-00) >> ");
+//		String writeDate = sc.nextLine();
 		// 배열의 빈 공간에 등록
+		
+		if(title.length() < 5 || title.length() > 15) {
+			System.out.println("등록 불가합니다!!");
+			return;
+		}
+		
+		for(int i = 0; i < boardRepo.length; i ++) {
+			if(boardRepo[i] != null && boardRepo[i].getTitle().equals(title)) {
+				System.out.println("이미 등록된 제목입니다!!");
+				return;
+			}
+		}
+		
+		System.out.println("게시글 내용을 입력해주세요. >> ");
+		String content = sc.nextLine();
+		
 		for(int i = 0; i < boardRepo.length; i ++) {
 			if(boardRepo[i] == null) {
 				boardRepo[i] = new Board(title, content, loginId, new Date());
@@ -113,7 +129,7 @@ public class BoardExe {
 	}
 	
 	public static void main(String[] args) {
-		MemberExe exe = new MemberExe();
+		//MemberExe exe = new MemberExe();
 		
 		
 		while(true) {
@@ -123,7 +139,7 @@ public class BoardExe {
 			System.out.println("비밀번호를 입력하세요. >> ");
 			String pw = sc.nextLine();
 			
-			String name = exe.login(id, pw);
+			String name = MemberExe.login(id, pw);
 			if(name != null) {
 				loginId = id; // 여러메소드 공용사용
 				System.out.println(name + "님 환영합니다.");
