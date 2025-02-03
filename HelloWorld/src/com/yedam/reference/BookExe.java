@@ -103,8 +103,8 @@ public class BookExe {
 	
 	
 	public static void main(String[] args) {
-		init(); // 기초데이터 생성.
 		boolean run = true;
+		init(); // 기초데이터 생성.
 
 		while (run) {
 			
