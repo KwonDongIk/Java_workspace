@@ -69,6 +69,7 @@ public class FriendExe {
 	
 	// 추가메소드
 	void friendList() {
+		boolean isExist = false;
 		System.out.println("*************** 친구목록 ***************");
 		for(int i = 0; i < friends.length; i ++) {
 			if (friends[i] != null) {
@@ -76,7 +77,11 @@ public class FriendExe {
 //					System.out.println("이름 : " + friends[i].getFriendName() + " 과 연락처 : " + friends[i].getPhoneNumber());
 //				}
 				System.out.println(friends[i].showInfo());
+				isExist = true;
 			}
+		}
+		if(!isExist) {
+			System.out.println(" **** No DATA **** ");
 		}
 		
 	}
@@ -181,15 +186,20 @@ public class FriendExe {
 	void delFriend() {
 		System.out.println("이름을 입력해주세요. >> ");
 		String name = sc.nextLine();
+		boolean isExist = false;
 		
 		for (int i = 0; i < friends.length; i++) {
 			if (friends[i] != null && friends[i].getFriendName().equals(name)) {
 				friends[i] = null ;
+				isExist = true;
 				System.out.println("삭제완료");
 				break;
 			}
 		
-	}
+		}
+		if(!isExist) {
+			System.out.println("일치하는 정보가 없습니다.");
+		}
 		
 	}
 
