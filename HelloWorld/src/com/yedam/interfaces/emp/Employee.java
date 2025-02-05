@@ -44,6 +44,13 @@ public class Employee {
 		this.salary = salary;
 		
 	}
+	
+	// 사번, 이름, 연락처, 급여
+	public String empInfo() {
+		// 사번 이름 연락처 급여
+		
+		return empNo + "  " + empName + "  " + telNo + "  " + salary;
+	}
 
 	// getter, setter
 	public int getEmpNo() {

@@ -17,7 +17,7 @@ public class MainExe {
 		boolean run = true;
 		
 		// 배열, 컬렉션 활용
-		EmpDAO dao = new EmpListExe(); // new EmpListExe() <- 컬렉션
+		EmpDAO dao = new EmpAryExe(); // new EmpListExe() <- 컬렉션 , new EmpAryExe() <- 배열
 		
 		while(run) {
 			
@@ -49,26 +49,75 @@ public class MainExe {
 				tel = sc.nextLine();
 				System.out.println("입사일자 >> ");
 				String hdate = sc.nextLine();
+				
+				if(hdate.equals("")) {
+					hdate = "1900-00-00";
+				}
 				System.out.println("급여 >> ");
-				int sal = Integer.parseInt(sc.nextLine());
+				String salString = sc.nextLine();
+				//int sal = Integer.parseInt(salString);
+				int sal = 0;
+				
+				if(!salString.equals("")) {
+					//salString = "0";
+					sal = Integer.parseInt(salString);
+				}
 				
 				if(dao.modifyEmp(new Employee(empNo, "", tel, hdate, sal))) {
 					System.out.println("수정 완료");
-				} else {
-					System.out.println("** 오류 **");
 				}
 				
 				break; // end case2
 				
 				
 				
-			case 3:
+			case 3: // 삭제
+				System.out.println("삭제할 사원번호를 입력해주세요. >> ");
+				empNo = Integer.parseInt(sc.nextLine());
 				
-			case 4:
+				if(dao.removeEmp(empNo)) {
+					System.out.println("삭제완료");
+				}
+				break; // end case3
+				
+				
+				
+			case 4: // 목록 조회
+				// 조회조건 (급여 이상)
+//				System.out.println("조회하고 싶은 급여 조건 입력 >> ");
+//				sal = Integer.parseInt(sc.nextLine());
+				
+				System.out.println("조회하고 싶은 이름 입력하세요. >> ");
+				eName = sc.nextLine();
+				
+				Employee emp = new Employee();
+//				emp.setSalary(sal);
+				emp.setEmpName(eName);
+				
+				// 조회결과
+				Employee[] result = dao.search(emp);
+				
+				System.out.println("사번     이름     연락처     급여");
+				System.out.println("-----------------------------");
+				
+				for(Employee empl : result) {
+					if(empl != null) {
+						System.out.println(empl.empInfo());
+					}
+				}
+				break; // end case4
+				
+				
 				
 			case 9:
+				System.out.println("프로그램 종료");
+				run = false;
+				break; // end case9
 				
+				
+			
 			default:
+				System.out.println("잘못된 선택입니다. 다시 선택하세요.");
 				
 			}
 		}
