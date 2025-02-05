@@ -19,7 +19,7 @@ public class Student {
 	}
 	
 	
-	Student(String studentName, int engScore, int mathScore) {
+	public Student(String studentName, int engScore, int mathScore) {
 		this.studentName = studentName;
 		this.engScore = engScore;
 		this.mathScore = mathScore;
