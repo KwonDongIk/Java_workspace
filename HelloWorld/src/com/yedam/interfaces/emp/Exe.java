@@ -2,7 +2,6 @@ package com.yedam.interfaces.emp;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.yedam.inheritance.ComFriend;
 import com.yedam.inheritance.Friend;
@@ -24,6 +23,15 @@ public class Exe {
 		students.add(new Student("이길동", 93, 92));
 		students.add(new Student("박길동", 91, 94));
 		
+		// 삭제
+		for(int i = 0; i < students.size(); i++) {
+			if (students.get(i).getStudentName().equals("이길동")) {
+				// students[i]
+				students.remove(i);
+				break;
+			}
+		}
+		// 출력 , 이름만
 		for(int i = 0; i < students.size(); i++) {
 			System.out.println("이름 : " + students.get(i).getStudentName());
 		}
