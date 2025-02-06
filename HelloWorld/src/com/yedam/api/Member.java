@@ -17,9 +17,11 @@ public class Member {
 	@Override
 	public int hashCode() {
 		// TODO Auto-generated method stub
-		return super.hashCode();
+		//return super.hashCode(); // object의 hashcode는 주소값
+		return memberPoint;
 	}
 	
+
 	@Override
 	public boolean equals(Object obj) {
 		
@@ -32,6 +34,11 @@ public class Member {
 			}
 			return false;
 	
+	}
+	
+	@Override
+	public String toString() {
+		return "Member [memberId=" + memberId + ", memberPoint=" + memberPoint + "]";
 	}
 
 }
