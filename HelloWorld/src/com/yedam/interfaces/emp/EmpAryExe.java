@@ -1,5 +1,8 @@
 package com.yedam.interfaces.emp;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 /*
  * 배열 활용
  */
@@ -19,19 +22,66 @@ public class EmpAryExe implements EmpDAO{
 	@Override
 	public boolean registerEmp(Employee emp) {
 		
-		return false;
+		for(int i = 0; i < employees.length; i++) {
+			
+			if(employees[i] == null) {
+				employees[i] = emp;
+				return true; // 등록 완료
+			}
+		}
+		return false; // 등록 불가
 	}
 
 	@Override
 	public boolean modifyEmp(Employee emp) {
 		
-		return false;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			for(int i = 0; i < employees.length; i ++) {
+				// 사원번호 비교
+				if(employees[i] != null && employees[i].getEmpNo() == emp.getEmpNo()) {
+					// 연락처 ""이 아닐때 변경
+					if(!emp.getTelNo().equals("")) {
+						
+						employees[i].setTelNo(emp.getTelNo());
+					}
+					
+					try 
+					{
+						// 값을 변경안하려고 "" 일경우 1900-00-00
+					
+					if (!emp.getHireDate().equals(sdf.parse("1900-00-00"))) 
+						
+						employees[i].setHireDate(emp.getHireDate());}
+					
+					catch(ParseException e) {
+						
+						e.printStackTrace();
+					}
+					
+					if(emp.getSalary() != 0) {
+					
+						employees[i].setSalary(emp.getSalary());
+					}
+					return true; // 정상 수정
+				}
+			}
+			return false; // 수정 완료 못함
 	}
 
 	@Override
 	public boolean removeEmp(int empNo) {
 		
-		return false;
+		for(int i = 0; i < employees.length; i ++) {
+					
+				if(employees[i] != null && employees[i].getEmpNo() == empNo) {
+					employees[i] = null; // 삭제
+					return true;
+					
+				}
+			}
+			
+			return false;
 	}
 
 	@Override

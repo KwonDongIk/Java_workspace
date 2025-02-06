@@ -10,25 +10,52 @@ import java.util.Scanner;
  */
 
 public class MainExe {
+	
+	static Scanner sc = new Scanner(System.in);
+	// 배열, 컬렉션 활용
+	static EmpDAO dao = new EmpAryExe(); // new EmpListExe() <- 컬렉션 , new EmpAryExe() <- 배열
+	
 	public static void main(String[] args) {
 		
 		// scanner, run
-		Scanner sc = new Scanner(System.in);
 		boolean run = true;
-		
-		// 배열, 컬렉션 활용
-		EmpDAO dao = new EmpAryExe(); // new EmpListExe() <- 컬렉션 , new EmpAryExe() <- 배열
 		
 		while(run) {
 			
 			System.out.println("1. 추가 2. 수정 3. 삭제 4. 조회 9. 종료");
 			System.out.println("선택 >> ");
 			
-			int menu = Integer.parseInt(sc.nextLine());
+			int menu = 0;
+			
+			try {
+			
+				menu = Integer.parseInt(sc.nextLine());
+			
+			} catch (NumberFormatException e) {
+				
+				System.out.println("잘못된 메뉴를 선택하셨어요.");
+				continue;
+				
+			}
 			switch(menu) {
 			case 1: // 추가. 사원번호, 이름, 전화번호
-				System.out.println("사원번호 >> ");
-				int empNo = Integer.parseInt(sc.nextLine());
+				
+				int empNo = 0;
+				
+				while(true) {
+					
+					try {
+						
+						System.out.println("사원번호 >> ");
+						empNo = Integer.parseInt(sc.nextLine());
+						break;
+					
+					} catch (NumberFormatException e) {
+						
+						System.out.println("번호를 제대로 확인해주세요.");
+						
+					}
+				}
 				System.out.println("이름 >> ");
 				String eName = sc.nextLine();
 				System.out.println("전화번호 >> ");
@@ -43,16 +70,34 @@ public class MainExe {
 				
 				
 			case 2: // 수정항목 : 전화번호, 입사일자, 급여 + 사원번호
-				System.out.println("수정할 사원번호를 입력해주세요. >> ");
-				empNo = Integer.parseInt(sc.nextLine());
+				
+				
+				while(true) {
+					
+					try {
+						
+						System.out.println("수정할 사원번호를 입력해주세요. >> ");
+						empNo = Integer.parseInt(sc.nextLine());
+						break;
+						
+					} catch (NumberFormatException e) {
+						
+						System.out.println("숫자가 아니에요.");
+						
+						
+					}
+				}
+				
 				System.out.println("전화번호 >> ");
 				tel = sc.nextLine();
+				
 				System.out.println("입사일자 >> ");
 				String hdate = sc.nextLine();
 				
 				if(hdate.equals("")) {
 					hdate = "1900-00-00";
 				}
+				
 				System.out.println("급여 >> ");
 				String salString = sc.nextLine();
 				//int sal = Integer.parseInt(salString);
@@ -72,11 +117,15 @@ public class MainExe {
 				
 				
 			case 3: // 삭제
-				System.out.println("삭제할 사원번호를 입력해주세요. >> ");
-				empNo = Integer.parseInt(sc.nextLine());
 				
-				if(dao.removeEmp(empNo)) {
-					System.out.println("삭제완료");
+				try {
+					
+					remove();
+					
+				} catch (NumberFormatException e) {
+					
+					System.out.println("잘못된 값을 입력하셨어요. 다시 확인하세요.");
+					
 				}
 				break; // end case3
 				
@@ -124,5 +173,18 @@ public class MainExe {
 		System.out.println("END");
 		
 	} // main
+	
+	
+	// 예외 떠넘기기 예제
+	static void remove() throws NumberFormatException{
+		
+		System.out.println("삭제할 사원번호를 입력해주세요. >> ");
+		int empNo = Integer.parseInt(sc.nextLine());
+		
+		if(dao.removeEmp(empNo)) {
+			System.out.println("삭제완료");
+		}
+		
+	}
 
 }
