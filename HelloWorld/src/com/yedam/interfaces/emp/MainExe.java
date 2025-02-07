@@ -1,5 +1,6 @@
 package com.yedam.interfaces.emp;
 
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -13,7 +14,7 @@ public class MainExe {
 	
 	static Scanner sc = new Scanner(System.in);
 	// 배열, 컬렉션 활용
-	static EmpDAO dao = new EmpAryExe(); // new EmpListExe() <- 컬렉션 , new EmpAryExe() <- 배열
+	static EmpDAO dao = new EmpListExe(); // new EmpListExe() <- 컬렉션 , new EmpAryExe() <- 배열
 	
 	public static void main(String[] args) {
 		
@@ -144,7 +145,9 @@ public class MainExe {
 				emp.setEmpName(eName);
 				
 				// 조회결과
-				Employee[] result = dao.search(emp);
+				//Employee[] result = dao.search(emp);
+				List<Employee> result = dao.search(emp); 
+				
 				
 				System.out.println("사번     이름     연락처     급여");
 				System.out.println("-----------------------------");
