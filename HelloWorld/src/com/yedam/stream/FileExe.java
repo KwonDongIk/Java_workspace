@@ -18,7 +18,18 @@ public class FileExe {
 		// ListExe.java 읽기
 		try {
 			Reader reader = new FileReader("c:/temp/ListExe.java");
-		} catch (FileNotFoundException e) {
+			
+			while(true) {
+				int chr = reader.read(); // char(2byte)
+				System.out.print((char) chr);
+				if (chr == -1) {
+					break;
+				}
+			}
+			reader.close();
+			
+			
+		} catch (IOException e) {
 			
 			e.printStackTrace();
 		}
