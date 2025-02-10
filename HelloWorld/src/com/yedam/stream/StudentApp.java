@@ -50,6 +50,7 @@ public class StudentApp {
 				System.out.println("프로그램 종료");
 				save();
 				run = false;
+				break;
 				
 			default:
 				System.out.println("잘못 선택하셨어요.");
