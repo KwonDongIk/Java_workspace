@@ -14,7 +14,7 @@ public class MainExe {
 	
 	static Scanner sc = new Scanner(System.in);
 	// 배열, 컬렉션 활용
-	static EmpDAO dao = new EmpListExe(); // new EmpListExe() <- 컬렉션 , new EmpAryExe() <- 배열
+	static EmpDAO dao = new EmpDBExe(); // new EmpListExe() <- 컬렉션 , new EmpAryExe() <- 배열
 	
 	public static void main(String[] args) {
 		
