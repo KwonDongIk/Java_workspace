@@ -96,7 +96,7 @@ public class MainExe {
 				String hdate = sc.nextLine();
 				
 				if(hdate.equals("")) {
-					hdate = "1900-00-00";
+					hdate = "1900-01-01";
 				}
 				
 				System.out.println("급여 >> ");
